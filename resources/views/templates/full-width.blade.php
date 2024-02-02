@@ -1,11 +1,8 @@
 @include('templates.header')
 
-
-    <div class="container">
+    <div class="container-fluid">
         @yield('content')
     </div>
 
 
 @include('templates.footer')
-
-

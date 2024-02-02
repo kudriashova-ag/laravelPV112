@@ -29,6 +29,9 @@ class MainController extends Controller
         ]);
 
         //dd( $request->all() );
-        return 123;
+        // return redirect('/contacts');
+        // return redirect()->route('contacts');
+        // return to_route('contacts');
+        return back()->with('success', 'Thank!');
     }
 }
