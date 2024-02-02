@@ -20,7 +20,14 @@
                     <td>{{$loop->iteration}}</td>
                     <td>{{$item->name}}</td>
                     <td>{{$item->description}}</td>
-                    <td></td>
+                    <td>
+                        <a href="{{route('categories.edit', ['category' => $item->id])}}" class="btn btn-warning">Edit</a>
+                        <form action="{{route('categories.destroy', ['category'=>$item->id])}}" method="post">
+                            @method('delete')
+                            @csrf
+                            <button class="btn btn-danger">Remove</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

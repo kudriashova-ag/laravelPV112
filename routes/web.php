@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\MainController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,15 @@ Route::get('contacts', [MainController::class, 'contacts'])->name('contacts');
 Route::post('contacts', [MainController::class, 'sendMessage'])->name('contacts.send');
 
 Route::resource('admin/categories', CategoryController::class);
+
+
+
+/* Route::get('category/{id}', function($id){
+    $category = Category::find($id);
+    dd($category);
+}); */
+
+
+// Route::get('category/{category}', function (Category $category) {
+//    dd($category);
+// });

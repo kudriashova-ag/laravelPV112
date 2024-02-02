@@ -1,11 +1,11 @@
 @extends('templates.main')
 
 @section('content')
-    <h1>Create Category</h1>
+    <h1>Edit Category {{$category->name}}</h1>
     
     @include('messages.errors')
 
-    {!! Form::open(['route' => 'categories.store']) !!}
+    {!! Form::model($category, ['route' => ['categories.update', $category->id], 'method'=>'put' ]) !!}
        @include('admin.categories._form')
     {!! Form::close() !!}
 @endsection
