@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -13,7 +14,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::with('category')->paginate(5);
+        // $products = Product::where('category_id', '=', 1)->where('price', '>', 100)->orderBy('name')->get();
+        // $products = Product::where('category_id', '=', 1)->where('price', '>', 100)->orderBy('name')->first();
+        // $products = Product::where('category_id', '=', 1)->where('price', '>', 100)->orderBy('name')->paginate(3);
+        // $products = Product::with('category')->get();
+        // dump($products);
+
+        return view('admin.products.index', compact('products'));
     }
 
     /**

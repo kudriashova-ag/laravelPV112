@@ -18,7 +18,7 @@
             @foreach ($categories as $item)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$item->name}}</td>
+                    <td>{{$item->name}}  ({{$item->products->count()}})    </td>
                     <td>{{$item->description}}</td>
                     <td>
                         <a href="{{route('categories.edit', ['category' => $item->id])}}" class="btn btn-warning">Edit</a>
