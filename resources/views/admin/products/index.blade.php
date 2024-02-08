@@ -1,4 +1,4 @@
-@extends('templates.main')
+@extends('admin.template')
 
 @section('content')
     <h1>Products</h1>
@@ -21,7 +21,7 @@
             @foreach ($products as $item)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td><img src="{{$item->image}}" alt="{{$item->name}}" style="width: 100px"></td>
+                    <td><img src="{{asset($item->image)}}" alt="{{$item->name}}" style="width: 100px"></td>
                     <td>{{$item->name}}</td>
                     <td>{{$item->price}}</td>
                     <td>{{$item->category->name}}</td>

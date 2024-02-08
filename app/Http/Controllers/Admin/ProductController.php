@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category')->paginate(5);
+        $products = Product::with('category')->orderBy('created_at', 'DESC')->paginate(5);
         // $products = Product::where('category_id', '=', 1)->where('price', '>', 100)->orderBy('name')->get();
         // $products = Product::where('category_id', '=', 1)->where('price', '>', 100)->orderBy('name')->first();
         // $products = Product::where('category_id', '=', 1)->where('price', '>', 100)->orderBy('name')->paginate(3);
@@ -29,7 +30,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all()->pluck('name', 'id');
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
@@ -37,7 +39,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'category_id' => 'required',
+            'image' => 'nullable|image'
+        ]);
+
+        $product = Product::create($request->all());
+
+        if($request->image){
+            $path = $request->file('image')->store();
+            $product->image = 'storage/' . $path;
+            $product->save();
+        }
+
+
+        return to_route('products.index');
     }
 
     /**

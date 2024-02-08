@@ -1,11 +1,11 @@
 ## Setup
 
+Переименовать .env.example в .env и заполнить подключение к БД
+
 -   composer install
 -   php artisan key:generate
 
-Переименовать .env.example в .env и заполнить подключение к БД
-
--   php artisan migrate
+-   php artisan migrate --seed
 
 ## About Laravel
 

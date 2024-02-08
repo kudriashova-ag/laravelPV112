@@ -23,3 +23,9 @@ Route::post('contacts', [MainController::class, 'sendMessage'])->name('contacts.
 
 Route::resource('admin/categories', CategoryController::class);
 Route::resource('admin/products', ProductController::class);
+
+
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
