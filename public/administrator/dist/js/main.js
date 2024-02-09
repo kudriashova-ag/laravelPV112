@@ -5,3 +5,6 @@ var options = {
     filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
 };
 CKEDITOR.replace('description', options);
+
+
+$('#lfm').filemanager('image');

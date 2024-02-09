@@ -180,6 +180,9 @@
     <script src="{{ asset('administrator/dist/js/adminlte.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+
+    <script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
+
     <script src="{{ asset('administrator/dist/js/main.js') }}"></script>
 </body>
 
