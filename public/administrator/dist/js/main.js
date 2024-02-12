@@ -8,3 +8,5 @@ CKEDITOR.replace('description', options);
 
 
 $('#lfm').filemanager('image');
+
+$('#products').select2();

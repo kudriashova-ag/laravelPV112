@@ -36,6 +36,18 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('contacts') }}">Contacts</a></li>
+
+                        <li class="nav-item dropdown" data-bs-toggle="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Catalog</a>
+                            <ul class="dropdown-menu">
+                                @foreach ($shareCategories as $shareCategory)
+                                    <li><a href="" class="dropdown-item">{{$shareCategory->name}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+
+
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

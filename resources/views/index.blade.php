@@ -2,17 +2,17 @@
 
 @section('content')
 
-    <h1>{{ $title }}</h1>
-    {!! $subtitle !!}
-
-    @forelse ($users as $user)
-        {{ $loop->iteration }} {{ $user }} <br>
-    @empty
-        <p>No users</p>
-    @endforelse
-
+    <div class="container">
+        <h2>Latest</h2>
+        <div class="row">
+            @foreach ($latestProducts as $item)
+                <div class="col-md-3">
+                    @include('catalog._product')
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection
 
 
 @section('title', 'Home Page')
-

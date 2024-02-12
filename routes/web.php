@@ -22,6 +22,9 @@ Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('contacts', [MainController::class, 'contacts'])->name('contacts');
 Route::post('contacts', [MainController::class, 'sendMessage'])->name('contacts.send');
 
+Route::get('product/{product}', [MainController::class, 'product'])->name('product');
+
+
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function () {

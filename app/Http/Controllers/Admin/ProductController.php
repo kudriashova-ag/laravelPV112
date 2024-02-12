@@ -31,7 +31,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all()->pluck('name', 'id');
-        return view('admin.products.create', compact('categories'));
+        $products = Product::all()->pluck('name', 'id');
+        return view('admin.products.create', compact('categories', 'products'));
     }
 
     /**
@@ -43,16 +44,20 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required',
             'category_id' => 'required',
-            'image' => 'nullable|image'
+            // 'image' => 'nullable|image'
         ]);
+
+       
 
         $product = Product::create($request->all());
 
-        if($request->image){
-            $path = $request->file('image')->store();
-            $product->image = 'storage/' . $path;
-            $product->save();
-        }
+        $product->products()->sync($request->products);
+
+        // if ($request->image) {
+        //     $path = $request->file('image')->store();
+        //     $product->image = 'storage/' . $path;
+        //     $product->save();
+        // }
 
 
         return to_route('products.index');
